@@ -1,0 +1,67 @@
+﻿@model TPA.SISEVE.Cliente.MVC.Models.CoberturaModel
+@{
+    ViewBag.Title = "Coberturas";
+}
+
+<h2>Consultar Cobertura</h2>
+
+<div class="row">
+    <div class="col-md-4 col-lg-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2 class="panel-title">Criterios de Búsqueda</h2>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginRouteForm("Cobertura", new { action = "Index" }, FormMethod.Post, new { role = "search" }))
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CiaSegId, "Compañía de Seguros", new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.CiaSegId, Model.ListadoCiaSeg, "Seleccione Compañia de Seguros", new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Estado, "Estado", new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.Estado, Model.ListadoEstados, "Seleccione Estado", new { @class = "form-control" })
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Consultar</button>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 col-lg-8">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2 class="panel-title">Listado de Aseguradoras</h2>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nombre</th>
+                            <th>Abreviatura</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.ListadoCobertura != null)
+                        {
+                            foreach (TPA.SISEVE.Dominio.Entidad.Cobertura Cobertura in ViewBag.ListadoCobertura)
+                            {
+                                <tr>
+                                    <td>@Cobertura.Id</td>
+                                    <td>@Cobertura.Nombre</td>
+                                    <td>@Cobertura.Abreviatura</td>
+                                    <td>@(Cobertura.Estado == "A" ? "Activo": "Inactivo")</td>
+                                    <td>
+                                        <a href="@Url.RouteUrl("Cobertura", new { action = "Edit", id = Cobertura.Id })" class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Modificar</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

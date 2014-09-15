@@ -1,0 +1,7 @@
+E:\Github\TPA_SISEVE\TPA.SISEVE.Repositorio.Datos.Interfaces\obj\Debug\TPA.SISEVE.Repositorio.Datos.Interfaces.csprojResolveAssemblyReference.cache
+E:\Github\TPA_SISEVE\TPA.SISEVE.Repositorio.Datos.Interfaces\bin\Debug\TPA.SISEVE.Repositorio.Datos.Interfaces.dll
+E:\Github\TPA_SISEVE\TPA.SISEVE.Repositorio.Datos.Interfaces\bin\Debug\TPA.SISEVE.Repositorio.Datos.Interfaces.pdb
+E:\Github\TPA_SISEVE\TPA.SISEVE.Repositorio.Datos.Interfaces\bin\Debug\TPA.SISEVE.Dominio.Entidad.dll
+E:\Github\TPA_SISEVE\TPA.SISEVE.Repositorio.Datos.Interfaces\bin\Debug\TPA.SISEVE.Dominio.Entidad.pdb
+E:\Github\TPA_SISEVE\TPA.SISEVE.Repositorio.Datos.Interfaces\obj\Debug\TPA.SISEVE.Repositorio.Datos.Interfaces.dll
+E:\Github\TPA_SISEVE\TPA.SISEVE.Repositorio.Datos.Interfaces\obj\Debug\TPA.SISEVE.Repositorio.Datos.Interfaces.pdb

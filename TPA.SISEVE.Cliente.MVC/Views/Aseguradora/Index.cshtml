@@ -1,0 +1,65 @@
+﻿@model TPA.SISEVE.Cliente.MVC.Models.CiaSegModel
+@{
+    ViewBag.Title = "Aseguradoras";
+}
+
+<h2>Consultar Aseguradora</h2>
+
+<div class="row">
+    <div class="col-md-4 col-lg-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2 class="panel-title">Criterios de Búsqueda</h2>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginRouteForm("Aseguradora", new { action = "Index" }, FormMethod.Post, new { role = "search" }))
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, "Nombre de Compañía de Seguros", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Nombre de Compañía de Seguros." })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Estado, "Estado", new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.Estado, Model.Estados, "Seleccione Estado", new { @class = "form-control" })
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Consultar</button>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 col-lg-8">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2 class="panel-title">Listado de Aseguradoras</h2>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nombre</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.ListadoCiaSeg != null)
+                        {
+                            foreach (TPA.SISEVE.Dominio.Entidad.CiaSeg CiaSeg in ViewBag.ListadoCiaSeg)
+                            {
+                                <tr>
+                                    <td>@CiaSeg.Id</td>
+                                    <td>@CiaSeg.Nombre</td>
+                                    <td>@(CiaSeg.Estado == "A" ? "Activo": "Inactivo")</td>
+                                    <td>
+                                        <a href="@Url.RouteUrl("Aseguradora", new { action = "Edit", id = CiaSeg.Id })" class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Modificar</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+C:\Users\Rafael\Documents\GitHub\TPA_SISEVE\TPA.SISEVE.Dominio.Entidad\bin\Debug\TPA.SISEVE.Dominio.Entidad.dll
+C:\Users\Rafael\Documents\GitHub\TPA_SISEVE\TPA.SISEVE.Dominio.Entidad\bin\Debug\TPA.SISEVE.Dominio.Entidad.pdb
+C:\Users\Rafael\Documents\GitHub\TPA_SISEVE\TPA.SISEVE.Dominio.Entidad\obj\Debug\TPA.SISEVE.Dominio.Entidad.csprojResolveAssemblyReference.cache
+C:\Users\Rafael\Documents\GitHub\TPA_SISEVE\TPA.SISEVE.Dominio.Entidad\obj\Debug\TPA.SISEVE.Dominio.Entidad.dll
+C:\Users\Rafael\Documents\GitHub\TPA_SISEVE\TPA.SISEVE.Dominio.Entidad\obj\Debug\TPA.SISEVE.Dominio.Entidad.pdb
+E:\Github\TPA_SISEVE\TPA.SISEVE.Dominio.Entidad\bin\Debug\TPA.SISEVE.Dominio.Entidad.dll
+E:\Github\TPA_SISEVE\TPA.SISEVE.Dominio.Entidad\bin\Debug\TPA.SISEVE.Dominio.Entidad.pdb
+E:\Github\TPA_SISEVE\TPA.SISEVE.Dominio.Entidad\obj\Debug\TPA.SISEVE.Dominio.Entidad.csprojResolveAssemblyReference.cache
+E:\Github\TPA_SISEVE\TPA.SISEVE.Dominio.Entidad\obj\Debug\TPA.SISEVE.Dominio.Entidad.dll
+E:\Github\TPA_SISEVE\TPA.SISEVE.Dominio.Entidad\obj\Debug\TPA.SISEVE.Dominio.Entidad.pdb
