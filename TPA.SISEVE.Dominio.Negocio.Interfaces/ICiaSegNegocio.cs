@@ -8,5 +8,9 @@ namespace TPA.SISEVE.Dominio.Negocio.Interfaces
 {
 	public interface ICiaSegNegocio : INegocio<CiaSeg>
 	{
+
+		IEnumerable<CiaSeg> BuscarTodosActivos();
+
+
 	}
 }

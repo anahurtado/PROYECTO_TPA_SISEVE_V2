@@ -39,8 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICanalNegocio.cs" />
     <Compile Include="ICiaSegNegocio.cs" />
     <Compile Include="ICoberturaNegocio.cs" />
+    <Compile Include="ICoberturaPlanNegocio.cs" />
+    <Compile Include="IGrupoVehiculoNegocio.cs" />
+    <Compile Include="IMarcaNegocio.cs" />
+    <Compile Include="IModeloNegocio.cs" />
     <Compile Include="INegocio.cs" />
     <Compile Include="IProductoNegocio.cs" />
     <Compile Include="IUsuarioNegocio.cs" />

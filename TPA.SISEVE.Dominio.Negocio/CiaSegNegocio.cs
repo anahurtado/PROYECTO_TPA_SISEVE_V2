@@ -38,5 +38,10 @@ namespace TPA.SISEVE.Dominio.Negocio
 		{
 			return CiaSegRepo.Eliminar(ciaSeg);
 		}
+
+		public IEnumerable<CiaSeg> BuscarTodosActivos()
+		{
+			return CiaSegRepo.BuscarTodos().Where(item => item.Estado == "A");
+		}
 	}
 }

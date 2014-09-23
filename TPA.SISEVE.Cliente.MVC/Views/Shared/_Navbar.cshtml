@@ -14,12 +14,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         @if (User.Identity.IsAuthenticated)
         {
-            
             TPA.SISEVE.Dominio.Entidad.Usuario Usuario;
 
-            if (HttpContext.Current.Session["Usuario"] != null)
+            if (HttpContext.Current.Session["User"] != null)
             {
-                Usuario = (TPA.SISEVE.Dominio.Entidad.Usuario)HttpContext.Current.Session["Usuario"];
+                Usuario = (TPA.SISEVE.Dominio.Entidad.Usuario)HttpContext.Current.Session["User"];
             }
             else
             {
@@ -28,56 +27,71 @@
             
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-university"></i> Aseguradora <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-university"></i> Aseguradoras <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="@Url.RouteUrl("Aseguradora", new { action = "New" })"><i class="fa fa-plus"></i> Registrar Aseguradora</a>
+                            <a href="@Url.RouteUrl("Aseguradora", new { action = "Register" })">Registrar Aseguradora</a>
                         </li>
                         <li>
-                            <a href="@Url.RouteUrl("Aseguradora", new { action = "Index" })"><i class="fa fa-search"></i> Consultar Aseguradora</a>
+                            <a href="@Url.RouteUrl("Aseguradora", new { action = "Search" })">Consultar Aseguradora</a>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-car"></i> Producto <span class="caret"></span></a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-car"></i> Productos <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="@Url.RouteUrl("Producto", new { action = "New" })"><i class="fa fa-plus"></i> Registrar Producto</a>
+                            <a href="@Url.RouteUrl("Producto", new { action = "Register" })">Registrar Producto</a>
                         </li>
                         <li>
-                            <a href="@Url.RouteUrl("Producto", new { action = "Index" })"><i class="fa fa-search"></i> Consultar Producto</a>
+                            <a href="@Url.RouteUrl("Producto", new { action = "Search" })">Consultar Producto</a>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="@Url.RouteUrl("Plan")"><i class="fa fa-newspaper-o"></i> Planes</a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-newspaper-o"></i> Planes <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="@Url.RouteUrl("Plan", new { action = "Register" })">Registrar Plan</a>
+                        </li>
+                    </ul>
                 </li>
-                
-                <li>
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cube"></i> Coberturas <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="@Url.RouteUrl("Cobertura", new { action = "New" })"><i class="fa fa-plus"></i> Registrar Cobertura</a>
+                            <a href="@Url.RouteUrl("Cobertura", new { action = "Register" })">Registrar Cobertura</a>
                         </li>
                         <li>
-                            <a href="@Url.RouteUrl("Cobertura", new { action = "Index" })"><i class="fa fa-search"></i> Consultar Cobertura</a>
+                            <a href="@Url.RouteUrl("Cobertura", new { action = "Search" })">Consultar Cobertura</a>
                         </li>
                     </ul>
                 </li>
-
-                <li>
-                    <a href="#"><i class="fa fa-frown-o"></i> Impuestos</a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-frown-o"></i> Impuestos <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="@Url.RouteUrl("Impuesto", new { action = "Register" })">Registrar Impuesto</a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-calculator"></i> Cotizaciones</a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-calculator"></i> Cotizaciones <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="@Url.RouteUrl("Cotizacion", new { action = "Register" })">Registrar Cotización</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> @Usuario.Nombre <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="@Url.RouteUrl("Account", new { action = "Logout" })"><i class="fa fa-sign-out"></i> Cerrar Sesión</a></li>
-                  </ul>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> @Usuario.Nombre <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="@Url.RouteUrl("Account", new { action = "Logout" })"><i class="fa fa-sign-out"></i> Cerrar Sesión</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         }

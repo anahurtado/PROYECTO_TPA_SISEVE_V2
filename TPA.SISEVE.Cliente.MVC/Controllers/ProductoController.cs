@@ -17,7 +17,7 @@ namespace TPA.SISEVE.Cliente.MVC.Controllers
 
         [Authorize]
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Search()
         {
             return View(new ProductoModel());
         }
@@ -25,7 +25,7 @@ namespace TPA.SISEVE.Cliente.MVC.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult Index(ProductoModel productoModel)
+        public ActionResult Search(ProductoModel productoModel)
         {
             IEnumerable<Producto> ListadoProducto = ProductoNegocio.BuscarTodos();
 
@@ -52,7 +52,7 @@ namespace TPA.SISEVE.Cliente.MVC.Controllers
 
         [Authorize]
         [HttpGet]
-        public ActionResult New()
+        public ActionResult Register()
         {
             return View(new ProductoModel());
         }
@@ -60,7 +60,7 @@ namespace TPA.SISEVE.Cliente.MVC.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult New(ProductoModel productoModel)
+        public ActionResult Register(ProductoModel productoModel)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace TPA.SISEVE.Cliente.MVC.Controllers
                 Producto.UsuarioRegistra = new Usuario() { Id = Convert.ToInt32(User.Identity.Name) };
                 Producto.FechaRegistro = DateTime.Now;
                 ProductoNegocio.Insertar(Producto);
-                return RedirectToRoute("Producto", new { action = "Index" });
+                return RedirectToRoute("Producto", new { action = "Search" });
             }
 
             return View(productoModel);
@@ -83,7 +83,7 @@ namespace TPA.SISEVE.Cliente.MVC.Controllers
 
             if (Producto == null)
             {
-                return RedirectToRoute("Producto", new { action = "Index" });
+                return RedirectToRoute("Producto", new { action = "Search" });
             }
 
             return View(new ProductoModel(Producto));
@@ -103,7 +103,7 @@ namespace TPA.SISEVE.Cliente.MVC.Controllers
                 Producto.DiasGracia = productoModel.DiasGracia;
                 Producto.Estado = productoModel.Estado;
                 ProductoNegocio.Actualizar(Producto);
-                return RedirectToRoute("Producto", new { action = "Index" });
+                return RedirectToRoute("Producto", new { action = "Search" });
             }
 
             return View(productoModel);

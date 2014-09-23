@@ -16,7 +16,7 @@ namespace TPA.SISEVE.Repositorio.Datos
 
 		public IEnumerable<Cobertura> BuscarTodos()
 		{
-			DbCommand Comando = BaseDatos.GetSqlStringCommand("select idcobertura, nombre, abrev, idcia_seg, estado, usu_reg, fec_reg from cobertura");
+			DbCommand Comando = BaseDatos.GetSqlStringCommand("select idcobertura, nombre, abrev, idciaseg, estado, usureg, fecreg from cobertura");
 			IList<Cobertura> Listado = new List<Cobertura>();
 
 			using (IDataReader Reader = BaseDatos.ExecuteReader(Comando))
@@ -43,7 +43,7 @@ namespace TPA.SISEVE.Repositorio.Datos
 
 		public Cobertura BuscarPorId(int id)
 		{
-			DbCommand Comando = BaseDatos.GetSqlStringCommand("select idcobertura, nombre, abrev, idcia_seg, estado, usu_reg, fec_reg from cobertura where idcobertura = @idcobertura");
+			DbCommand Comando = BaseDatos.GetSqlStringCommand("select idcobertura, nombre, abrev, idciaseg, estado, usureg, fecreg from cobertura where idcobertura = @idcobertura");
 			BaseDatos.AddInParameter(Comando, "@idcobertura", DbType.Int32, id);
 
 			using (IDataReader Reader = BaseDatos.ExecuteReader(Comando))
@@ -68,20 +68,20 @@ namespace TPA.SISEVE.Repositorio.Datos
 
 		public Cobertura Insertar(Cobertura cobertura)
 		{
-			DbCommand Comando = BaseDatos.GetSqlStringCommand("insert into cobertura(nombre, abrev, idcia_seg, estado, usu_reg, fec_reg) values(@nombre, @abrev, @idcia_seg, @estado, @usu_reg, @fec_reg) set @idcobertura = scope_identity()");
+			DbCommand Comando = BaseDatos.GetSqlStringCommand("insert into cobertura(nombre, abrev, idciaseg, estado, usureg, fecreg) values(@nombre, @abrev, @idciaseg, @estado, @usureg, @fecreg) set @idcobertura = scope_identity()");
 			BaseDatos.AddInParameter(Comando, "@nombre", DbType.String, cobertura.Nombre);
 			BaseDatos.AddInParameter(Comando, "@abrev", DbType.String, cobertura.Abreviatura);
-			BaseDatos.AddInParameter(Comando, "@idcia_seg", DbType.Int32, cobertura.CiaSeg.Id);
+			BaseDatos.AddInParameter(Comando, "@idciaseg", DbType.Int32, cobertura.CiaSeg.Id);
 			BaseDatos.AddInParameter(Comando, "@estado", DbType.String, cobertura.Estado);
-			BaseDatos.AddInParameter(Comando, "@usu_reg", DbType.Int32, cobertura.UsuarioRegistra.Id);
-			BaseDatos.AddInParameter(Comando, "@fec_reg", DbType.DateTime, cobertura.FechaRegistro);
+			BaseDatos.AddInParameter(Comando, "@usureg", DbType.Int32, cobertura.UsuarioRegistra.Id);
+			BaseDatos.AddInParameter(Comando, "@fecreg", DbType.DateTime, cobertura.FechaRegistro);
 			BaseDatos.AddOutParameter(Comando, "@idcobertura", DbType.Int32, 4);
 
 			int FilasAfectadas = BaseDatos.ExecuteNonQuery(Comando);
 
 			if (FilasAfectadas > 0)
 			{
-				int Id = Convert.ToInt32(Comando.Parameters["@idcia_seg"].Value);
+				int Id = Convert.ToInt32(Comando.Parameters["@idciaseg"].Value);
                 return BuscarPorId(Id);
 			}
 
@@ -90,14 +90,14 @@ namespace TPA.SISEVE.Repositorio.Datos
 
 		public Cobertura Actualizar(Cobertura cobertura)
 		{
-			DbCommand Comando = BaseDatos.GetSqlStringCommand("update cobertura set nombre = @nombre, abrev = @abrev, idcia_seg = @idcia_seg, estado = @estado, usu_reg = @usu_reg, fec_reg = @fec_reg where idcobertura = @idcobertura");
+			DbCommand Comando = BaseDatos.GetSqlStringCommand("update cobertura set nombre = @nombre, abrev = @abrev, idciaseg = @idciaseg, estado = @estado, usureg = @usureg, fecreg = @fecreg where idcobertura = @idcobertura");
 			BaseDatos.AddInParameter(Comando, "@idcobertura", DbType.Int32, cobertura.Id);
 			BaseDatos.AddInParameter(Comando, "@nombre", DbType.String, cobertura.Nombre);
 			BaseDatos.AddInParameter(Comando, "@abrev", DbType.String, cobertura.Abreviatura);
-			BaseDatos.AddInParameter(Comando, "@idcia_seg", DbType.Int32, cobertura.CiaSeg.Id);
+			BaseDatos.AddInParameter(Comando, "@idciaseg", DbType.Int32, cobertura.CiaSeg.Id);
 			BaseDatos.AddInParameter(Comando, "@estado", DbType.String, cobertura.Estado);
-			BaseDatos.AddInParameter(Comando, "@usu_reg", DbType.Int32, cobertura.UsuarioRegistra.Id);
-			BaseDatos.AddInParameter(Comando, "@fec_reg", DbType.DateTime, cobertura.FechaRegistro);
+			BaseDatos.AddInParameter(Comando, "@usureg", DbType.Int32, cobertura.UsuarioRegistra.Id);
+			BaseDatos.AddInParameter(Comando, "@fecreg", DbType.DateTime, cobertura.FechaRegistro);
 
 			int FilasAfectadas = BaseDatos.ExecuteNonQuery(Comando);
 			return (FilasAfectadas > 0) ? BuscarPorId(cobertura.Id) : null;
@@ -105,8 +105,8 @@ namespace TPA.SISEVE.Repositorio.Datos
 
 		public bool Eliminar(Cobertura cobertura)
 		{
-			DbCommand Comando = BaseDatos.GetSqlStringCommand("delete from cobertura where idcia_seg = @idcia_seg");
-			BaseDatos.AddInParameter(Comando, "@idcia_seg", DbType.Int32, cobertura.Id);
+			DbCommand Comando = BaseDatos.GetSqlStringCommand("delete from cobertura where idciaseg = @idciaseg");
+			BaseDatos.AddInParameter(Comando, "@idciaseg", DbType.Int32, cobertura.Id);
 
 			int FilasAfectadas = BaseDatos.ExecuteNonQuery(Comando);
 			return (FilasAfectadas > 0);

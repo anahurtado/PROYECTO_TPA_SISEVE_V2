@@ -18,7 +18,7 @@ namespace TPA.SISEVE.Cliente.MVC.Controllers
 
 		[Authorize]
 		[HttpGet]
-		public ActionResult Index()
+        public ActionResult Search()
 		{
 			return View(new CoberturaModel());
 		}
@@ -26,7 +26,7 @@ namespace TPA.SISEVE.Cliente.MVC.Controllers
 
 		[Authorize]
 		[HttpPost]
-		public ActionResult Index(CoberturaModel coberturaModel)
+		public ActionResult Search(CoberturaModel coberturaModel)
 		{
             IEnumerable<Cobertura> ListadoCobertura = CoberturaNegocio.BuscarTodos();
 
@@ -47,7 +47,7 @@ namespace TPA.SISEVE.Cliente.MVC.Controllers
 
 		[Authorize]
 		[HttpGet]
-		public ActionResult New()
+		public ActionResult Register()
 		{
 			return View(new CoberturaModel());
 		}
@@ -55,7 +55,7 @@ namespace TPA.SISEVE.Cliente.MVC.Controllers
 
 		[Authorize]
 		[HttpPost]
-		public ActionResult New(CoberturaModel coberturaModel)
+        public ActionResult Register(CoberturaModel coberturaModel)
 		{
 			if (ModelState.IsValid)
 			{
@@ -64,7 +64,7 @@ namespace TPA.SISEVE.Cliente.MVC.Controllers
 				Cobertura.FechaRegistro = DateTime.Now;
 
 				CoberturaNegocio.Insertar(Cobertura);
-				return RedirectToRoute("Cobertura", new { action = "Index" });
+                return RedirectToRoute("Cobertura", new { action = "Search" });
 			}
 
 			return View(coberturaModel);
@@ -79,7 +79,7 @@ namespace TPA.SISEVE.Cliente.MVC.Controllers
 
 			if (Cobertura == null)
 			{
-				return RedirectToRoute("Cobertura", new { action = "Index" });
+                return RedirectToRoute("Cobertura", new { action = "Search" });
 			}
 
 			return View(new CoberturaModel(Cobertura));
@@ -99,7 +99,7 @@ namespace TPA.SISEVE.Cliente.MVC.Controllers
 				Cobertura.Estado = coberturaModel.Estado;
 
 				CoberturaNegocio.Actualizar(Cobertura);
-				return RedirectToRoute("Cobertura", new { action = "Index" });
+                return RedirectToRoute("Cobertura", new { action = "Search" });
 			}
 
 			return View(coberturaModel);

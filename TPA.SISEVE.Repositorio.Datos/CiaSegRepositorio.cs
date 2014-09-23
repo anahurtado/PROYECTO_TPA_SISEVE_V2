@@ -17,7 +17,7 @@ namespace TPA.SISEVE.Repositorio.Datos
 
 		public IEnumerable<CiaSeg> BuscarTodos()
 		{
-			DbCommand Comando = BaseDatos.GetSqlStringCommand("select idcia_seg, nombre, estado, usu_reg, fec_reg from cia_seg");
+            DbCommand Comando = BaseDatos.GetSqlStringCommand("select idciaseg, nombre, estado, usureg, fecreg from cia_seg");
 			IList<CiaSeg> Listado = new List<CiaSeg>();
 
 			using (IDataReader Reader = BaseDatos.ExecuteReader(Comando))
@@ -42,8 +42,8 @@ namespace TPA.SISEVE.Repositorio.Datos
 
 		public CiaSeg BuscarPorId(int id)
 		{
-			DbCommand Comando = BaseDatos.GetSqlStringCommand("select idcia_seg, nombre, estado, usu_reg, fec_reg from cia_seg where idcia_seg = @idcia_seg");
-			BaseDatos.AddInParameter(Comando, "@idcia_seg", DbType.Int32, id);
+            DbCommand Comando = BaseDatos.GetSqlStringCommand("select idciaseg, nombre, estado, usureg, fecreg from cia_seg where idciaseg = @idciaseg");
+			BaseDatos.AddInParameter(Comando, "@idciaseg", DbType.Int32, id);
 
 			using (IDataReader Reader = BaseDatos.ExecuteReader(Comando))
 			{
@@ -65,18 +65,18 @@ namespace TPA.SISEVE.Repositorio.Datos
 
 		public CiaSeg Insertar(CiaSeg ciaSeg)
 		{
-			DbCommand Comando = BaseDatos.GetSqlStringCommand("insert into cia_seg(nombre, estado, usu_reg, fec_reg) values(@nombre, @estado, @usu_reg, @fec_reg) set @idcia_seg = scope_identity()");
+			DbCommand Comando = BaseDatos.GetSqlStringCommand("insert into cia_seg(nombre, estado, usureg, fecreg) values(@nombre, @estado, @usureg, @fecreg) set @idciaseg = scope_identity()");
 			BaseDatos.AddInParameter(Comando, "@nombre", DbType.String, ciaSeg.Nombre);
 			BaseDatos.AddInParameter(Comando, "@estado", DbType.String, ciaSeg.Estado);
-			BaseDatos.AddInParameter(Comando, "@usu_reg", DbType.Int32, ciaSeg.UsuarioRegistra.Id);
-			BaseDatos.AddInParameter(Comando, "@fec_reg", DbType.DateTime, ciaSeg.FechaRegistro);
-			BaseDatos.AddOutParameter(Comando, "@idcia_seg", DbType.Int32, 4);
+			BaseDatos.AddInParameter(Comando, "@usureg", DbType.Int32, ciaSeg.UsuarioRegistra.Id);
+			BaseDatos.AddInParameter(Comando, "@fecreg", DbType.DateTime, ciaSeg.FechaRegistro);
+			BaseDatos.AddOutParameter(Comando, "@idciaseg", DbType.Int32, 4);
 
 			int FilasAfectadas = BaseDatos.ExecuteNonQuery(Comando);
 
 			if (FilasAfectadas > 0)
 			{
-				int Id = Convert.ToInt32(Comando.Parameters["@idcia_seg"].Value);
+				int Id = Convert.ToInt32(Comando.Parameters["@idciaseg"].Value);
 				return BuscarPorId(Id);
 			}
 
@@ -85,12 +85,12 @@ namespace TPA.SISEVE.Repositorio.Datos
 
 		public CiaSeg Actualizar(CiaSeg ciaSeg)
 		{
-			DbCommand Comando = BaseDatos.GetSqlStringCommand("update cia_seg set nombre = @nombre, estado = @estado, usu_reg = @usu_reg, fec_reg = @fec_reg where idcia_seg = @idcia_seg");
-			BaseDatos.AddInParameter(Comando, "@idcia_seg", DbType.Int32, ciaSeg.Id);
+            DbCommand Comando = BaseDatos.GetSqlStringCommand("update cia_seg set nombre = @nombre, estado = @estado, usureg = @usureg, fecreg = @fecreg where idciaseg = @idciaseg");
+			BaseDatos.AddInParameter(Comando, "@idciaseg", DbType.Int32, ciaSeg.Id);
 			BaseDatos.AddInParameter(Comando, "@nombre", DbType.String, ciaSeg.Nombre);
 			BaseDatos.AddInParameter(Comando, "@estado", DbType.String, ciaSeg.Estado);
-			BaseDatos.AddInParameter(Comando, "@usu_reg", DbType.Int32, ciaSeg.UsuarioRegistra.Id);
-			BaseDatos.AddInParameter(Comando, "@fec_reg", DbType.DateTime, ciaSeg.FechaRegistro);
+			BaseDatos.AddInParameter(Comando, "@usureg", DbType.Int32, ciaSeg.UsuarioRegistra.Id);
+			BaseDatos.AddInParameter(Comando, "@fecreg", DbType.DateTime, ciaSeg.FechaRegistro);
 
 			int FilasAfectadas = BaseDatos.ExecuteNonQuery(Comando);
 
@@ -99,8 +99,8 @@ namespace TPA.SISEVE.Repositorio.Datos
 
 		public bool Eliminar(CiaSeg ciaSeg)
 		{
-			DbCommand Comando = BaseDatos.GetSqlStringCommand("delete from cia_seg where idcia_seg = @idcia_seg");
-			BaseDatos.AddInParameter(Comando, "@idcia_seg", DbType.Int32, ciaSeg.Id);
+            DbCommand Comando = BaseDatos.GetSqlStringCommand("delete from cia_seg where idciaseg = @idciaseg");
+			BaseDatos.AddInParameter(Comando, "@idciaseg", DbType.Int32, ciaSeg.Id);
 
 			int FilasAfectadas = BaseDatos.ExecuteNonQuery(Comando);
 			

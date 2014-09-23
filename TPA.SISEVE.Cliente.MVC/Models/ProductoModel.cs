@@ -13,25 +13,22 @@ namespace TPA.SISEVE.Cliente.MVC.Models
     public class ProductoModel
     {
 
-        protected ICiaSegNegocio CiaSegNegocio = null;
-
-
         public ProductoModel() { }
 
-        public ProductoModel(Producto producto) 
+        public ProductoModel(Producto producto)
         {
-            this.CiaSegId = producto.CiaSeg.Id;
-            this.Nombre = producto.Nombre;
-            this.Descripcion = producto.Descripcion;
-            this.DiasVigencia = producto.DiasVigencia;
-            this.DiasCarencia = producto.DiasCarencia;
-            this.DiasGracia = producto.DiasGracia;
-            this.Estado = producto.Estado;
+            CiaSegId = producto.CiaSeg.Id;
+            Nombre = producto.Nombre;
+            Descripcion = producto.Descripcion;
+            DiasVigencia = producto.DiasVigencia;
+            DiasCarencia = producto.DiasCarencia;
+            DiasGracia = producto.DiasGracia;
+            Estado = producto.Estado;
         }
 
 
         [Display(Name = "Compañía de Seguro")]
-        [Required(ErrorMessage = "Seleccione una Compañía de Seguro.")]
+        [Required(ErrorMessage = "Seleccione una Aseguradora.")]
         public int CiaSegId { get; set; }
 
         [Display(Name = "Nombre")]
@@ -78,10 +75,10 @@ namespace TPA.SISEVE.Cliente.MVC.Models
         {
             get
             {
-                CiaSegNegocio = new CiaSegNegocio();
+                ICiaSegNegocio CiaSegNegocio= new CiaSegNegocio();
                 IList<SelectListItem> ListadoCiaSeg = new List<SelectListItem>();
 
-                foreach (CiaSeg CiaSeg in CiaSegNegocio.BuscarTodos().Where(item => item.Estado == "A").OrderBy(item => item.Nombre))
+                foreach (CiaSeg CiaSeg in CiaSegNegocio.BuscarTodosActivos().OrderBy(item => item.Nombre))
                 {
                     ListadoCiaSeg.Add(new SelectListItem() { Text = CiaSeg.Nombre, Value = CiaSeg.Id.ToString() });
                 }

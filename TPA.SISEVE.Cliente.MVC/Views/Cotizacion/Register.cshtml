@@ -1,0 +1,105 @@
+﻿@model TPA.SISEVE.Cliente.MVC.Models.CotizacionModel
+@{
+    ViewBag.Title = "Registrar Cotización";
+}
+
+<fieldset>
+    <legend>Registrar Cotización</legend>
+</fieldset>
+
+<div class="row">
+    <div class="col-sm-3 col-md-3 col-lg-3">
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Cotizador de Autos</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MarcaId, new { @class= "control-label" })
+                    @Html.DropDownListFor(model => model.MarcaId, Model.ListadoMarca, "Seleccione Marca", new { @class= "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ModeloId, new { @class= "control-label" })
+                    @Html.DropDownListFor(model => model.ModeloId, Model.ListadoModelo, "Seleccione Modelo", new { @class= "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Año, new { @class= "control-label" })
+                    @Html.DropDownListFor(model => model.Año, Model.ListadoAño, "Seleccione Año", new { @class= "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TipoTimonId, new { @class= "control-label" })
+                    @Html.DropDownListFor(model => model.TipoTimonId, Model.ListadoTipoTimon, "Seleccione Tipo Timón", new { @class= "form-control" })
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary btn-block" name="btnCotizar" id="btnCotizar"><i class="fa fa-search"></i> Cotizar Vehículo</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-9 col-md-9 col-lg-9">
+        <div class="panel panel-info">
+            <div class="panel-heading">Cotizaciones</div>
+            <div class="panel-body">
+                <form method="post" class="form-inline">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DNI, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.DNI, new { type = "number", @class = "form-control", placeholder = "D.N.I." })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FechaNacimiento, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.FechaNacimiento, new { type = "date", @class = "form-control", placeholder = "Fecha de Nacimiento" })
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success"><i class="fa fa-check"></i> Contratar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-body">
+                    <table id="GrupoVehiculoTable" class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th>Compañía</th>
+                                <th>Moneda</th>
+                                <th>Monto Prima</th>
+                                <th>Nombre Producto</th>
+                                <th>Nombre Plan</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Rimac Seguros</td>
+                                <td>DOL</td>
+                                <td>648.00</td>
+                                <td>Corporativo</td>
+                                <td>Plan Premiun</td>
+                                <td>
+                                    <input type="radio" name="PlanCotizacion" value="1" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pacífico Seguros</td>
+                                <td>DOL</td>
+                                <td>648.00</td>
+                                <td>Corporativo</td>
+                                <td>Plan Premiun</td>
+                                <td>
+                                    <input type="radio" name="PlanCotizacion" value="1" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section scripts 
+{
+    <script src="@Url.Content("~/Scripts/Cotizacion.js")"></script>
+}

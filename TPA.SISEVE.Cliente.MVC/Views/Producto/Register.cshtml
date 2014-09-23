@@ -1,0 +1,72 @@
+﻿@model TPA.SISEVE.Cliente.MVC.Models.ProductoModel
+
+@{
+    ViewBag.Title = "Registrar Producto";
+}
+
+<div class="row">
+    <div class="col-md-4 col-lg-4">
+
+         <fieldset>
+            <legend>Registrar Producto</legend>
+        </fieldset>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Producto</div>
+            <div class="panel-body">
+
+                @using (Html.BeginRouteForm("Producto", new { action = "Register" }, FormMethod.Post, new { role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CiaSegId, "Compañía de Seguros", new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.CiaSegId, Model.ListadoCiaSeg, "Seleccione Compañia de Seguros", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CiaSegId, null, new { @class = "help-block error" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Ingrese nombre.", maxlength = "100" })
+                        @Html.ValidationMessageFor(model => model.Nombre, null, new { @class = "help-block error" })
+                    </div>
+            
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Descripcion, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control", placeholder = "Ingrese descripcion.", maxlength = "200" })
+                        @Html.ValidationMessageFor(model => model.Descripcion, null, new { @class = "help-block error" })
+                    </div>
+            
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DiasVigencia, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.DiasVigencia, new { @class = "form-control", placeholder = "Ingrese días de vigencia.", type = "number" })
+                        @Html.ValidationMessageFor(model => model.DiasVigencia, null, new { @class = "help-block error" })
+                    </div>
+            
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DiasCarencia, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.DiasCarencia, new { @class = "form-control", placeholder = "Ingrese días de carencia.", type = "number" })
+                        @Html.ValidationMessageFor(model => model.DiasCarencia, null, new { @class = "help-block error" })
+                    </div>
+            
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DiasGracia, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.DiasGracia, new { @class = "form-control", placeholder = "Ingrese días de gracia.", type = "number" })
+                        @Html.ValidationMessageFor(model => model.DiasGracia, null, new { @class = "help-block error" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Estado, new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.Estado, Model.ListadoEstados, "Seleccione Estado", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Estado, null, new { @class = "help-block error" })
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Registrar Producto</button>
+                        <a href="@Url.RouteUrl("Producto", new { action = "Index" })" class="btn btn-danger"><i class="fa fa-close"></i> Cancelar</a>
+                    </div>
+                }
+            </div>
+    </div>
+</div>

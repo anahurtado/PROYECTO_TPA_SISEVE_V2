@@ -1,0 +1,76 @@
+﻿@model TPA.SISEVE.Cliente.MVC.Models.ProductoModel
+@{
+    ViewBag.Title = "Productos";
+}
+
+<h2>Consultar Producto</h2>
+
+<div class="row">
+    <div class="col-md-3 col-lg-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2 class="panel-title">Criterios de Búsqueda</h2>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginRouteForm("Producto", new { action = "Search" }, FormMethod.Post, new { role = "search" }))
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CiaSegId, "Compañía de Seguros", new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.CiaSegId, Model.ListadoCiaSeg, "Seleccione Compañia de Seguros", new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Ingrese nombre del producto" })
+                    </div>
+                    
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Estado, "Estado", new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.Estado, Model.ListadoEstados, "Seleccione Estado", new { @class = "form-control" })
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Consultar</button>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9 col-lg-9">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2 class="panel-title">Listado de Productos</h2>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nombre</th>
+                            <th>Compañía</th>
+                            <th>Descripción Comercial</th>
+                            <th>Días Vigencia</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.ListadoProducto != null)
+                        {
+                            foreach (TPA.SISEVE.Dominio.Entidad.Producto Producto in ViewBag.ListadoProducto)
+                            {
+                                <tr>
+                                    <td>@Producto.Id</td>
+                                    <td>@Producto.Nombre</td>
+                                    <td>@Producto.CiaSeg.Nombre</td>
+                                    <td>@Producto.Descripcion</td>
+                                    <td>@Producto.DiasVigencia</td>
+                                    <td>@(Producto.Estado == "A" ? "Activo": "Inactivo")</td>
+                                    <td>
+                                        <a href="@Url.RouteUrl("Producto", new { action = "Edit", id = Producto.Id })" class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Modificar</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

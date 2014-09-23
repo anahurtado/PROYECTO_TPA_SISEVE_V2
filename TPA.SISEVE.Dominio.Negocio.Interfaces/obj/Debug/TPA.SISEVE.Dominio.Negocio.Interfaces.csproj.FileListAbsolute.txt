@@ -5,3 +5,10 @@ E:\Github\TPA_SISEVE\TPA.SISEVE.Dominio.Negocio.Interfaces\obj\Debug\TPA.SISEVE.
 E:\Github\TPA_SISEVE\TPA.SISEVE.Dominio.Negocio.Interfaces\obj\Debug\TPA.SISEVE.Dominio.Negocio.Interfaces.pdb
 E:\Github\TPA_SISEVE\TPA.SISEVE.Dominio.Negocio.Interfaces\bin\Debug\TPA.SISEVE.Dominio.Entidad.dll
 E:\Github\TPA_SISEVE\TPA.SISEVE.Dominio.Negocio.Interfaces\bin\Debug\TPA.SISEVE.Dominio.Entidad.pdb
+C:\Users\Rafael\Documents\GitHub\TPA_SISEVE\TPA.SISEVE.Dominio.Negocio.Interfaces\bin\Debug\TPA.SISEVE.Dominio.Negocio.Interfaces.dll
+C:\Users\Rafael\Documents\GitHub\TPA_SISEVE\TPA.SISEVE.Dominio.Negocio.Interfaces\bin\Debug\TPA.SISEVE.Dominio.Negocio.Interfaces.pdb
+C:\Users\Rafael\Documents\GitHub\TPA_SISEVE\TPA.SISEVE.Dominio.Negocio.Interfaces\bin\Debug\TPA.SISEVE.Dominio.Entidad.dll
+C:\Users\Rafael\Documents\GitHub\TPA_SISEVE\TPA.SISEVE.Dominio.Negocio.Interfaces\bin\Debug\TPA.SISEVE.Dominio.Entidad.pdb
+C:\Users\Rafael\Documents\GitHub\TPA_SISEVE\TPA.SISEVE.Dominio.Negocio.Interfaces\obj\Debug\TPA.SISEVE.Dominio.Negocio.Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\Rafael\Documents\GitHub\TPA_SISEVE\TPA.SISEVE.Dominio.Negocio.Interfaces\obj\Debug\TPA.SISEVE.Dominio.Negocio.Interfaces.dll
+C:\Users\Rafael\Documents\GitHub\TPA_SISEVE\TPA.SISEVE.Dominio.Negocio.Interfaces\obj\Debug\TPA.SISEVE.Dominio.Negocio.Interfaces.pdb

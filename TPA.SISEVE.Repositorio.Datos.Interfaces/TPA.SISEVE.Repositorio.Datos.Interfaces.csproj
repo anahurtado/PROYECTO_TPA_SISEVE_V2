@@ -39,8 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICanalRepositorio.cs" />
     <Compile Include="ICiaSegRepositorio.cs" />
+    <Compile Include="ICoberturaPlanRepositorio.cs" />
     <Compile Include="ICoberturaRepositorio.cs" />
+    <Compile Include="IGrupoVehiculoRepositorio.cs" />
+    <Compile Include="IMarcaRepositorio.cs" />
+    <Compile Include="IModeloRepositorio.cs" />
+    <Compile Include="IPlanRepositorio.cs" />
     <Compile Include="IProductoRepositorio.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="IUsuarioRepositorio.cs" />

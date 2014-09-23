@@ -1,0 +1,43 @@
+﻿@model TPA.SISEVE.Cliente.MVC.Models.CiaSegModel
+
+@{
+    ViewBag.Title = "Registrar Aseguradora";
+}
+
+<div class="row">
+    <div class="col-md-4 col-lg-4">
+        <fieldset>
+            <legend>Registrar Aseguradora</legend>
+        </fieldset>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Aseguradora</div>
+            <div class="panel-body">
+                
+                @using (Html.BeginRouteForm("Aseguradora", new { action = "Register" }, FormMethod.Post, new { role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Ingrese nombre.", autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.Nombre, null, new { @class = "help-block error" })
+                    </div>
+    
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Estado, new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.Estado, Model.ListadoEstados, "Seleccione Estado", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Estado, null, new { @class = "help-block error" })
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Registrar Aseguradora</button>
+                        <a href="@Url.RouteUrl("Aseguradora", new { action = "Search" })" class="btn btn-danger"><i class="fa fa-close"></i> Cancelar</a>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

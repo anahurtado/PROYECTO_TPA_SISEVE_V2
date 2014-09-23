@@ -17,8 +17,8 @@ namespace TPA.SISEVE.Cliente.MVC.Models
 
 		[Display(Name = "Contraseña")]
 		[DataType(DataType.Password)]
-		[Required(ErrorMessage = "Ingrese la contraseña.")]
-		[ContraseñaCorrecta("DNI", ErrorMessage = "La contraseña es incorrecta.")]
+		[Required(ErrorMessage = "Ingrese la contraseña del usuario.")]
+		[ContraseñaCorrecta("DNI", ErrorMessage = "La contraseña del usuario es incorrecta.")]
 		public string Contraseña { get; set; }
 	}
 }

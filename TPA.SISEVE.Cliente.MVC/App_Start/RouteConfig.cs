@@ -28,7 +28,7 @@ namespace TPA.SISEVE.Cliente.MVC
             routes.MapRoute(
                 name: "Aseguradora",
                 url: "Aseguradora/{action}/{id}",
-                defaults: new { controller = "Aseguradora", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "CiaSeg", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

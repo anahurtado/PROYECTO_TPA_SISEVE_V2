@@ -1,0 +1,57 @@
+﻿@model TPA.SISEVE.Cliente.MVC.Models.CoberturaModel
+
+@{
+    ViewBag.Title = "Registrar Cobertura";
+}
+
+
+<div class="row">
+    <div class="col-md-4 col-lg-4">
+
+        <fieldset>
+            <legend>Registrar Cobertura</legend>
+        </fieldset>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2 class="panel-title">Cobertura</h2>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginRouteForm("Cobertura", new { action = "Register" }, FormMethod.Post, new { role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CiaSegId, "Compañía de Seguros", new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.CiaSegId, Model.ListadoCiaSeg, "Seleccione Compañia de Seguros", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CiaSegId, null, new { @class = "help-block error" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Ingrese nombre.", maxlength = "100" })
+                        @Html.ValidationMessageFor(model => model.Nombre, null, new { @class = "help-block error" })
+                    </div>
+            
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Abreviatura, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Abreviatura, new { @class = "form-control", placeholder = "Ingrese abreviatura.", maxlength = "10" })
+                        @Html.ValidationMessageFor(model => model.Abreviatura, null, new { @class = "help-block error" })
+                    </div>
+    
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Estado, new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.Estado, Model.ListadoEstados, "Seleccione Estado", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Estado, null, new { @class = "help-block error" })
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Registrar Cobertura</button>
+                        <a href="@Url.RouteUrl("Cobertura", new { action = "Index" })" class="btn btn-danger"><i class="fa fa-close"></i> Cancelar</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

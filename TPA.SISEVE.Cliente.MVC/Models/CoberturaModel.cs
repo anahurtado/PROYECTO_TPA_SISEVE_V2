@@ -49,7 +49,7 @@ namespace TPA.SISEVE.Cliente.MVC.Models
 				ICiaSegNegocio CoberturaNegocio = new CiaSegNegocio();
 				IList<SelectListItem> ListadoCiaSeg = new List<SelectListItem>();
 
-				foreach (CiaSeg CiaSeg in CoberturaNegocio.BuscarTodos().Where(item => item.Estado == "A").OrderBy(item => item.Nombre))
+				foreach (CiaSeg CiaSeg in CoberturaNegocio.BuscarTodosActivos().OrderBy(item => item.Nombre))
 				{
 					ListadoCiaSeg.Add(new SelectListItem() { Text = CiaSeg.Nombre, Value = CiaSeg.Id.ToString() });
 				}

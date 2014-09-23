@@ -11,30 +11,29 @@ namespace TPA.SISEVE.Cliente.MVC.Models
 	public class CiaSegModel
 	{
 
+        public CiaSegModel() { }
 
-		public CiaSegModel() { }
-
-		public CiaSegModel(CiaSeg ciaSeg) 
-		{
-			this.Id = ciaSeg.Id;
-			this.Nombre = ciaSeg.Nombre;
-			this.Estado = ciaSeg.Estado;
-		}
+        public CiaSegModel(CiaSeg CiaSeg) 
+        {
+            Id = CiaSeg.Id;
+            Nombre = CiaSeg.Nombre;
+            Estado = CiaSeg.Estado;
+        }
 
 
+
+		[Display(Name = "Código")]
 		public int Id { get; set; }
 
 		[Display(Name = "Nombre")]
-		[Required(ErrorMessage = "Ingrese el nombre.")]
+		[Required(ErrorMessage = "Ingrese el nombre de la aseguradora.")]
 		public string Nombre { get; set; }
 
 		[Display(Name = "Estado")]
 		[Required(ErrorMessage = "Seleccione un estado.")]
 		public string Estado { get; set; }
 
-
-
-		public IEnumerable<SelectListItem> Estados
+		public IEnumerable<SelectListItem> ListadoEstados
 		{
 			get
 			{
@@ -47,16 +46,16 @@ namespace TPA.SISEVE.Cliente.MVC.Models
 		}
 
 
-		public CiaSeg ObtenerEntidad()
-		{
-			return new CiaSeg()
-			{
-				Id = this.Id,
-				Nombre = this.Nombre,
-				Estado = this.Estado
-			};
-		}
-
-
+        public CiaSeg ObtenerEntidad()
+        {
+            return new CiaSeg()
+                {
+                    Id = this.Id,
+                    Nombre = this.Nombre,
+                    Estado = this.Estado,
+                    FechaRegistro = DateTime.Now,
+                    UsuarioRegistra = new Usuario()
+                };
+        }
 	}
 }
